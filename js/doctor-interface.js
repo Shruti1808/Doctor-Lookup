@@ -1,27 +1,43 @@
 var apiKey = require('./../.env').apiKey;
 var DoctorData = require('./../js/doctor.js').doctorModule;
 
+ var displayDoctors = function(medicalIssue, doctor Entry){
+   $('.showCondition').append("<h2>The condition you entered is " + medicalIssue + ".</h2>");
+
+   $('.showDoctors').append("<h2>"+ doctorEntry.forEach(entry){
+     entry.profile.first_name + ' ' + entry.profile.last_name + "<br>" + entry.specialties[0].name + "</h2>")
+   }
+
+ }
+
+
+
+
+
 $(document).ready(function() {
   var newDoctorData = new DoctorData();
 
   $('#search-form').submit(function(){
     event.preventDefault();
+    newDoctorData.retrieved = [];
     var medicalIssue = $('#condition-input').val();
-    $('.showCondition').text("The condition you entered is " + medicalIssue + ".");
-    $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + medicalIssue + 'location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=20&user_key=' + apiKey)
-    .then function(result){
-      console.log(result);
 
 
-    }
 
-    newDoctorData.getDoctors();
+    newDoctorData.getDoctors(medicalIssue,displayDoctors);
   });
 });
 
 
 
-// var DoctorData = require('./../js/doctor.js').doctorModule;
+
+
+
+
+
+
+
+
 // var displayDoctors = function(medicalIssue, doctorEntry) {
 //   $('.showCondition').append("<h2>" + "You inputted: " + medicalIssue.capitalizeFirst() + "</h2>");
 //   doctorEntry.forEach(function(entry) {

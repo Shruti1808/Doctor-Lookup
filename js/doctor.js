@@ -15,7 +15,7 @@ DoctorData.prototype.getDoctors = function(medicalIssue, displayDoctors){
     });
 
     displayDoctors(medicalIssue , doctorDataObj.retrieved);
-    
+
     })
     .fail(function(error) {
         console.log("fail");
@@ -24,3 +24,5 @@ DoctorData.prototype.getDoctors = function(medicalIssue, displayDoctors){
 };
 
 exports.doctorModule = DoctorData;
+
+//query for list of specialities:  https://api.betterdoctor.com/2016-03-01/specialties?user_key=
