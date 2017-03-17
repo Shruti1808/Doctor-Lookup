@@ -5,71 +5,33 @@
   <link rel="stylesheet" href="build/css/styles.css">
   <script src="build/js/vendor.min.js"></script>
   <script type="text/javascript" src="build/js/app.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYHE_eB1vpFRnsj1kqvEtTP87whcv8Pow"></script>
-  <script type="text/javascript" src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
-  <title>911 Seattle</title>
+  <title>Doctor Lookup</title>
 </head>
 
 <body>
-  <div class="search">
-    <div class="form-group">
-      <label for="crime">Choose a kind of crime</label>
-      <select required class="form-control" id="crime">
-        <option value="" disabled selected></option>
-        <option>MOTOR VEHICLE COLLISION</option>
-        <option>HARASSMENT, THREATS</option>
-        <option>THEFT - CAR PROWL</option>
-        <option>FIGHT DISTURBANCE</option>
-        <option>PARKING VIOLATION (EXCEPT ABANDONED VEHICLES)</option>
-        <option>TRESPASS</option>
-        <option>BURGLARY - RESIDENTIAL, UNOCCUPIED</option>
-        <option>LIQUOR VIOLATION - ADULT</option>
-      </select>
+  <h1>Search For Doctors !</h1>
+  <!-- Page Content -->
+  <div class="container">
+    <hr>
+    <form id="search-form">
+      <label for="condition-input">Enter your medical issue</label>
+      <input type="text" name="condition-input" id="condition-input" class="form-control">
+      <br>
+      <button type="submit" class="btn btn-success">Search for Doctors</button>
+    </form>
+    <hr>
+    <div class="showCondition">
+
     </div>
-    <div class="form-group">
-      <label for="district">Choose District/Sector</label>
-      <select required class="form-control" id="district">
-        <option value="" disabled selected></option>
-        <option>99</option>
-        <option>B</option>
-        <option>C</option>
-        <option>D</option>
-        <option>E</option>
-        <option>F</option>
-        <option>G</option>
-        <option>H</option>
-        <option>J</option>
-        <option>K</option>
-        <option>L</option>
-        <option>M</option>
-        <option>N</option>
-        <option>O</option>
-        <option>Q</option>
-        <option>R</option>
-        <option>S</option>
-        <option>U</option>
-        <option>W</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="first-date">Between</label>
-      <input type="date" name="first-date" id="first-date">
-      <label for="second-date">And</label>
-      <input type="date" name="second-date" id="second-date">
-    </div>
-    <button class="btn-success" id="get-crimes">Get 911 Calls Map!</button>
-    <button class="btn-success" id="get-chart">Get 911 Calls Chart!</button>
+    <hr>
   </div>
-  <div class="row">
-    <div class="col-md-7">
-      <h3>My Google Maps Demo</h3>
-      <div id="map"></div>
-    </div>
-    <div class="col-md-5">
-      <h3>My Charts Demo</h3>
-      <div id="chartContainer" style="height: 500px; width: 100%;"></div>
-    </div>
+
+  <!--Doctor Content -->
+  <div class="showDoctors">
+
   </div>
+
+
 
 </body>
 
