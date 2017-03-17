@@ -41,9 +41,9 @@ gulp.task('concatInterface', function() {
 });
 
 gulp.task('minifyScripts', ['jsBrowserify'], function () {
-  return gulp.src("./build/js/app.js")
+  return gulp.src('./build/js/app.js')
   .pipe(uglify())
-  .pipe(gulp.dest("./build/js"));
+  .pipe(gulp.dest('./build/js'));
 });
 
 gulp.task("build", ['clean'], function(){

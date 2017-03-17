@@ -5,27 +5,20 @@ exports.apiKey = "c62784b962f978cfe0691e677aa67371";
 var apiKey = require('./../.env').apiKey;
 
 DoctorData = function(){
-  this.retrieved = [];
+
 };
 
-DoctorData.prototype.getDoctors = function(medicalIssue, displayDoctors){
-
-  var doctorDataObj = this;
+DoctorData.prototype.getDoctor = function(medicalIssue){
 
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+ medicalIssue +'&location=45.5231%2C-122.6765%2C%205&user_location=45.5231%2C-122.6765&skip=0&limit=1&user_key=' + apiKey)
-  .then(function(result) {
-    result.data.forEach(function(dataEntry){
-      DoctorDataObj.retrieved.push(dataEntry);
-    });
-
-    displayDoctors(medicalIssue , doctorDataObj.retrieved);
-
-    })
-    .fail(function(error) {
-        console.log("fail");
-      });
-      this.retrieved = doctorDataObj.retrieved;
+  .then(function(response){
+    $('.showDoctors').text("The condition you have entered is " + medicalIssue + ".");
+      })
+      .fail(function(error){
+          console.log("fail");
+});
 };
+
 
 exports.doctorModule = DoctorData;
 
@@ -35,24 +28,15 @@ exports.doctorModule = DoctorData;
 var apiKey = require('./../.env').apiKey;
 var DoctorData = require('./../js/doctor.js').doctorModule;
 
- var displayDoctors = function(medicalIssue, doctorEntry){
-   $('.showCondition').append("<h2>The condition you entered is " + medicalIssue + ".</h2>");
 
-   $('.showDoctors').append();
-
-    doctorEntry.forEach(function(entry){'<h2>' +
-     entry.profile.first_name + ' ' + entry.profile.last_name + '<br>' + entry.specialties[0].name + '</h2>';
-  });
-};
 
 $(document).ready(function() {
-  var newDoctorData = new DoctorData();
+  var currentDoctorData = new DoctorData();
 
-  $('#search-form').submit(function(){
-    event.preventDefault();
-    newDoctorData.retrieved = [];
+  $('#search-doctors').click(function(){
     var medicalIssue = $('#condition-input').val();
-    newDoctorData.getDoctors(medicalIssue,displayDoctors);
+    $('#condition-input').val("");
+    currentDoctorData.getDoctor(medicalIssue);
   });
 });
 
